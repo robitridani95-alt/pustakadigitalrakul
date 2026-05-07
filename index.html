@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PustakaPro - Perpustakaan Digital</title>
+    <meta name="description" content="Platform perpustakaan digital profesional dengan akses mudah.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>PustakaPro</span>
+        </div>
+        <div class="nav-links">
+            <button id="btn-home" class="nav-btn active">Beranda</button>
+            <button id="btn-admin" class="nav-btn">Admin Portal</button>
+        </div>
+    </nav>
+
+    <!-- Main Content: Reader View -->
+    <main id="view-reader" class="view active">
+        <header class="hero">
+            <h1>Selamat Datang di <span>PustakaPro</span></h1>
+            <p>Jelajahi koleksi buku digital kami. Cukup klik pada buku untuk mulai membaca tanpa ribet.</p>
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="search-input" placeholder="Cari judul buku atau penulis...">
+            </div>
+        </header>
+
+        <section class="book-grid" id="book-grid">
+            <!-- Books will be rendered here via JS -->
+        </section>
+    </main>
+
+    <!-- Admin Portal View -->
+    <main id="view-admin" class="view">
+        <div id="admin-login" class="admin-panel active">
+            <div class="glass-card">
+                <div class="login-header">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <h2>Login Admin</h2>
+                </div>
+                <p>Masukkan kata sandi untuk mengelola buku dan cover (data tersimpan permanen).</p>
+                <div class="input-group">
+                    <input type="password" id="admin-password" placeholder="Kata Sandi (admin123)">
+                    <button id="btn-login" class="primary-btn">Masuk</button>
+                </div>
+                <p id="login-error" class="error-msg"></p>
+            </div>
+        </div>
+
+        <div id="admin-dashboard" class="admin-panel">
+            <div class="dashboard-header">
+                <h2><i class="fa-solid fa-gear"></i> Portal Manajemen Buku</h2>
+                <button id="btn-logout" class="secondary-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Keluar</button>
+            </div>
+
+            <div class="glass-card form-container">
+                <h3><i class="fa-solid fa-square-plus"></i> Tambah Buku Baru</h3>
+                <form id="add-book-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-title">Judul Buku</label>
+                            <input type="text" id="book-title" required placeholder="Contoh: Laskar Pelangi">
+                        </div>
+                        <div class="form-group">
+                            <label for="book-author">Penulis</label>
+                            <input type="text" id="book-author" required placeholder="Contoh: Andrea Hirata">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="book-publisher">Penerbit</label>
+                            <input type="text" id="book-publisher" required placeholder="Contoh: Bentang Pustaka">
+                        </div>
+                        <div class="form-group">
+                            <label for="book-cover">Upload Foto Cover</label>
+                            <input type="file" id="book-cover" accept="image/*" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-link">Link URL Baca Buku (PDF/Web)</label>
+                        <input type="url" id="book-link" required placeholder="https://example.com/baca">
+                    </div>
+                    <button type="submit" class="primary-btn submit-btn">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Simpan Buku Permanen
+                    </button>
+                </form>
+            </div>
+
+            <div class="glass-card table-container">
+                <h3><i class="fa-solid fa-list-ul"></i> Daftar Buku Tersimpan</h3>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Cover</th>
+                                <th>Judul Buku</th>
+                                <th>Penulis & Penerbit</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-book-list">
+                            <!-- Admin list rendered here via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
